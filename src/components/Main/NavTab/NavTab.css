@@ -1,0 +1,27 @@
+
+.navtab__list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.navtab__list-item {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.navtab__list-item:last-child {
+    margin-right: 0;
+}
+
+.navtab__list-link {
+    border-radius: 10px;
+    background: #E8E8E8;
+    padding: 10px 17px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+}

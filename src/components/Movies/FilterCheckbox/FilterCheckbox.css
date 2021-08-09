@@ -1,0 +1,30 @@
+
+.filter-checkbox {
+    margin: auto;
+    width: 200px;
+}
+
+.filter-checkbox__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.filter-checkbox__input+.filter-checkbox__label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+.filter-checkbox__input+.filter-checkbox__label::before {
+    content: '';
+    background-image: url("../../../images/checkbox.svg");
+    width: 36px;
+    height: 20px;
+    margin-right: 12px;
+}
+
+.filter-checkbox__input:checked+.filter-checkbox__label::before {
+    opacity: .3;
+}
+
