@@ -29,3 +29,15 @@
         margin-bottom: 314px;
     }
 }
+
+
+@media screen and (max-width: 375px) {
+    .promo
+    {
+        max-width: 292px;
+    }
+    .promo__title {
+        font-size: 29px;
+        margin-bottom: 217px;
+    }
+}

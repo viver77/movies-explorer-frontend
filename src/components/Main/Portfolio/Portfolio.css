@@ -39,3 +39,12 @@
     /*height: 60px;*/
 
 }
+
+@media screen and (max-width: 375px) {
+    .about-me__portfolio-text {
+        font-size: 14px;
+    }
+    .about-me__portfolio-list-link {
+        font-size: 18px;
+    }
+}

@@ -1,30 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import account from "../../images/account.svg";
 import './Header.css';
 import Logotype from '../logotype/logotype';
+import Navigation from '../Navigation/Navigation';
 
-function Header({ links, loggedIn }) {
+function Header({ links, loggedIn, onEditMenu }) {
+
+    const location = useLocation();
+
+    const isBurgerMenu= (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile');
+
+    const LIST_OF_CLASSES =
+        {
+            classNameLinks: 'header__links',
+            classNameLinksItem: 'header__links-item',
+            classNameLinkProfile: 'header__link-profile',
+        }
+
     return (
         <header className="header">
            <Logotype />
-            <div className="header__wrapper">
-                <ul className="header__links-auth">
-                    {links.map((item) =>
-                        <li key={item.id} className="header__links-auth-item">
-                            <Link className={item.className} to={item.link}>
-                                {item.title}
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-                {loggedIn && (
-                    <Link className="header__link-profile link" to='/profile'>
-                        Аккаунт
-                        <img className="header__icon-account" alt="логотип" src={account}/>
-                    </Link>
-                )}
+            <div className={`header__wrapper ${isBurgerMenu && 'header__wrapper-mobile'}`}>
+                <Navigation links={links} classes={LIST_OF_CLASSES} loggedIn={loggedIn}/>
             </div>
+            {isBurgerMenu && (
+                <button className="header__menu-btn" onClick={onEditMenu}/>
+            )}
         </header>
     );
 }

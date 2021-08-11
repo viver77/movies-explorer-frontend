@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /*justify-content: center;*/
-  padding-bottom: 60px;
+  justify-content: center;
 }
 
 .not-found__container {
@@ -11,6 +10,9 @@
   flex-direction: column;
   /*align-items: center;*/
   margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .not-found__title {
@@ -29,7 +31,6 @@
   margin: 0 0 184px;
 }
 
-
 .not-found__btn-go-back {
   border: none;
   outline: none;
@@ -41,4 +42,17 @@
 
 .not-found__btn-go-back:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 375px) {
+  .not-found__title {
+    font-size: 80px;
+  }
+  .not-found__subtitle {
+    font-size: 12px;
+  }
+  .not-found__btn-go-back {
+    font-size: 12px;
+  }
+
 }

@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import './App.css'
 import Header from '../Header/Header';
@@ -9,6 +10,7 @@ import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
 import Profile from '../Profile/Profile';
 import SavedMovies from '../Movies/SavedMovies/SavedMovies';
+import MenuPopup from '../MenuPopup/MenuPopup';
 
 function App() {
 
@@ -42,6 +44,17 @@ function App() {
         },
     ];
 
+    const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false)
+
+    const handleMenuPopupClick = () => {
+        setIsMenuPopupOpen(true)
+    }
+
+    const closeAllPopups = () => {
+        setIsMenuPopupOpen(false)
+    }
+
+
     return (
         <div className="App">
             <div className="page">
@@ -65,6 +78,7 @@ function App() {
                             <Header
                                 links={HEADER_LINKS_MOVIES}
                                 loggedIn={true}
+                                onEditMenu={handleMenuPopupClick}
                             />
                             <Movies/>
                             <Footer/>
@@ -75,6 +89,7 @@ function App() {
                             <Header
                                 links={HEADER_LINKS_MOVIES}
                                 loggedIn={true}
+                                onEditMenu={handleMenuPopupClick}
                             />
                             <SavedMovies />
                             <Footer/>
@@ -98,6 +113,7 @@ function App() {
                             <Header
                                 links={HEADER_LINKS_MOVIES}
                                 loggedIn={true}
+                                onEditMenu={handleMenuPopupClick}
                             />
                             <Profile />
                         </Route>
@@ -106,6 +122,14 @@ function App() {
                             <NotFound />
                         </Route>
                     </Switch>
+
+                    <MenuPopup
+                        isOpen={isMenuPopupOpen}
+                        onClose={closeAllPopups}
+                        links={HEADER_LINKS_MOVIES}
+                        loggedIn={true}
+                    />
+
                 </div>
             </div>
         </div>

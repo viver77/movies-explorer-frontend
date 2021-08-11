@@ -16,12 +16,11 @@
     list-style: none;
     padding-left: 0;
     display: flex;
-    flex-wrap: wrap;
     margin: 0 0 110px;
 }
 
 .about-project__list-item {
-    width: 550px;
+    max-width: 550px;
     margin-right: 40px;
 
 }
@@ -62,6 +61,8 @@
     font-size: 14px;
     line-height: 1.21;
     font-weight: normal;
+
+
 }
 
 .about-project__duration-text {
@@ -69,4 +70,42 @@
     font-size: 14px;
     line-height: 1.21;
     color: #A0A0A0;
+}
+
+
+@media screen and (max-width: 768px) {
+    .about-project {
+        padding: 110px 50px 125px;
+    }
+    .about-project__list-item
+    {
+       max-width: 319px;
+    }
+    .about-project__list-text {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .about-project__list {
+       flex-direction: column;
+        margin-bottom: 0;
+    }
+    .about-project__list-title {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+    .about-project__list-text {
+        margin-bottom: 56px;
+    }
+
+    .about-project__duration-title {
+        font-size: 11px;
+    }
+    .about-project__duration-text {
+        font-size: 11px;
+    }
+    .about-project {
+        padding: 110px 19px 70px;
+    }
 }

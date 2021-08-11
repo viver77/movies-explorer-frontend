@@ -6,6 +6,7 @@ function Login() {
 
     const settingsLogin= {
         title: 'Рады видеть!',
+        titleClassName:'auth__title',
         labelClassName: 'auth__form-label',
         inputClassName: 'auth__form-input',
         buttonText: 'Войти',

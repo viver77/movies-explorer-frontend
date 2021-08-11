@@ -1,6 +1,4 @@
 .page {
-    /*height: 100%;*/
-
     font-family: 'Inter', 'Arial', sans-serif;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -17,6 +15,4 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-    border: 1px solid red;
 }

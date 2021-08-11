@@ -25,3 +25,9 @@
     font-size: 12px;
     line-height: 1.33;
 }
+
+@media screen and (max-width: 375px) {
+    .navtab__list-link {
+        font-size: 10px;
+    }
+}
