@@ -11,7 +11,7 @@ function MenuPopup({ isOpen, onClose, links, loggedIn }) {
             classNameLinkProfile: 'menu-mobile__link-profile',
         }
 
-        if (links.find(item=> item.id === 3) === undefined) {
+        if (isOpen && links.find(item=> item.id === 3) === undefined) {
             links.unshift(
                 {
                     id: 3,

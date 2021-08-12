@@ -1,9 +1,14 @@
 .promo {
+    padding: 0 40px 0;
+    margin: auto;
+}
+
+.promo__container {
+    border-radius: 10px;
+    padding: 160px 0 40px;
+    margin: 0 auto 16px;
     max-width: 1200px;
     background: #F5F5F5;
-    border-radius: 10px;
-    padding: 160px 0 30px;
-    margin: 0 auto 16px;
 }
 
 .promo__title {
@@ -20,6 +25,7 @@
     .promo
     {
         max-width: 728px;
+        padding: 0 20px 0;
     }
 
     .promo__title {
@@ -35,6 +41,7 @@
     .promo
     {
         max-width: 292px;
+        padding: 0 14px 0;
     }
     .promo__title {
         font-size: 29px;

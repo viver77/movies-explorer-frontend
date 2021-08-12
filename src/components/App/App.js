@@ -19,13 +19,13 @@ function App() {
             id: 1,
             title: 'Регистрация',
             link: '/signup',
-            className: 'header__links-auth-link link',
+            className: 'header__links-link link',
         },
         {
             id: 2,
             title: 'Войти',
             link: '/signin',
-            className: 'header__links-auth-link header__links-auth-link_bgcolor_green link',
+            className: 'header__links-link header__links-link_bgcolor_green link',
         },
     ];
 

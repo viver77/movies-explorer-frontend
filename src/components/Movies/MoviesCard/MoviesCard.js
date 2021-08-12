@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './MoviesCard.css';
 import poster from '../../../images/movie.svg';
 import CardButton from '../CardButton/CardButton';
 
 function MoviesCard ({ card, locationPath }) {
 
-    const isLiked = false;
+    const [isLiked, setIsLiked] = useState();
+
+    function handleLikeClick() {
+        setIsLiked(!isLiked)
+    }
+
+    function handleDeleteCard() {
+
+    }
+
+    const handleClick = locationPath === '/movies' ? handleLikeClick: handleDeleteCard;
 
     return (
         <li className="elements__item card">
@@ -14,9 +24,13 @@ function MoviesCard ({ card, locationPath }) {
                     <h2 className="card__title">{card.title}</h2>
                     <p className="card__duration">{card.duration}</p>
                 </div>
-                <CardButton locationPath={locationPath} />
+                <CardButton
+                    onClick={handleClick}
+                    locationPath={locationPath}
+                    isLiked={isLiked}
+                />
             </div>
-            <img className="card__image" src={poster} alt={card.name}/>
+            <img className="card__image" src={poster} alt={card.name} />
         </li>
     )
 }

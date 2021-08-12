@@ -1,12 +1,23 @@
 import React from 'react';
 import './CardButton.css';
 
-function CardButton ({ locationPath }) {
+function CardButton ({ locationPath, onClick, isLiked }) {
 
-    const className = locationPath ==='/movies' ? 'card__like-btn' : 'card__delete-btn';
+    let className = '';
 
-    return (<button className={'card-btn ' + className} type="button"
-                    aria-label="действие кнопки"></button>)
+    if (locationPath === '/movies') {
+        if (isLiked) {
+            className = 'card__like-btn_active'
+        } else className = 'card__like-btn'
+    } else className = 'card__delete-btn'
+
+    return (
+        <button className={'card-btn ' + className}
+                type="button"
+                aria-label="действие кнопки"
+                onClick={onClick}
+        />
+    )
 }
 
 export default CardButton;

@@ -74,4 +74,6 @@
 
 .menu-mobile__link-profile {
     margin-bottom: 90px;
+    display: flex;
+    align-items: center;
 }
