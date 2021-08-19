@@ -49,7 +49,8 @@ function Header({ isLoggedIn, onEditMenu }) {
 
     const links = getLinks();
 
-    const isBurgerMenu = (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile');
+    const isBurgerMenu = (location.pathname === '/movies' || location.pathname === '/saved-movies'
+        || location.pathname === '/profile' || (isLoggedIn && location.pathname === '/'));
 
     const LIST_OF_CLASSES =
         {

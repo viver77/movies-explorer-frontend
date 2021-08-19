@@ -45,6 +45,7 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
+                alert('Что-то пошло не так! Попробуйте еще раз.')
             })
     }
 
@@ -59,6 +60,7 @@ function App() {
             })
             .catch(err => {
                 console.log(err);
+                alert('Что-то пошло не так! Попробуйте еще раз.')
             })
     }
 
