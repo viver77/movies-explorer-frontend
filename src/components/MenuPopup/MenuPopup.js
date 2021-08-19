@@ -2,7 +2,22 @@ import React from 'react';
 import './MenuPopup.css';
 import Navigation from '../Navigation/Navigation';
 
-function MenuPopup({ isOpen, onClose, links, loggedIn }) {
+function MenuPopup({ isOpen, onClose, loggedIn }) {
+
+    const links = [
+        {
+            id: 1,
+            title: 'Фильмы',
+            link: '/movies',
+            className: 'header__links-movies-link link',
+        },
+        {
+            id: 2,
+            title: 'Сохраненные фильмы',
+            link: '/saved-movies',
+            className: 'header__links-saved-movies-link link',
+        },
+    ]
 
     const LIST_OF_CLASSES =
         {

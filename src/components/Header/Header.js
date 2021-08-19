@@ -1,15 +1,55 @@
 import React from 'react';
-import {Link, useLocation} from 'react-router-dom';
-import account from "../../images/account.svg";
+import { useLocation } from 'react-router-dom';
 import './Header.css';
 import Logotype from '../logotype/logotype';
 import Navigation from '../Navigation/Navigation';
 
-function Header({ links, loggedIn, onEditMenu }) {
+function Header({ isLoggedIn, onEditMenu }) {
 
     const location = useLocation();
 
-    const isBurgerMenu= (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile');
+    if (!(location.pathname === '/' || location.pathname === '/movies'
+        || location.pathname === '/saved-movies' || location.pathname === '/profile')) {
+        return null
+    }
+
+    const getLinks = () => {
+        if (location.pathname === '/' && !isLoggedIn) {
+            return [
+                {
+                    id: 1,
+                    title: 'Регистрация',
+                    link: '/signup',
+                    className: 'header__links-link link',
+                },
+                {
+                    id: 2,
+                    title: 'Войти',
+                    link: '/signin',
+                    className: 'header__links-link header__links-link_bgcolor_green link',
+                },
+            ]
+        } else {
+            return [
+                {
+                    id: 1,
+                    title: 'Фильмы',
+                    link: '/movies',
+                    className: 'header__links-movies-link link',
+                },
+                {
+                    id: 2,
+                    title: 'Сохраненные фильмы',
+                    link: '/saved-movies',
+                    className: 'header__links-saved-movies-link link',
+                },
+            ]
+        }
+    }
+
+    const links = getLinks();
+
+    const isBurgerMenu = (location.pathname === '/movies' || location.pathname === '/saved-movies' || location.pathname === '/profile');
 
     const LIST_OF_CLASSES =
         {
@@ -20,9 +60,9 @@ function Header({ links, loggedIn, onEditMenu }) {
 
     return (
         <header className="header">
-           <Logotype />
+            <Logotype/>
             <div className={`header__wrapper ${isBurgerMenu && 'header__wrapper-mobile'}`}>
-                <Navigation links={links} classes={LIST_OF_CLASSES} loggedIn={loggedIn}/>
+                <Navigation links={links} classes={LIST_OF_CLASSES} isLoggedIn={isLoggedIn}/>
             </div>
             {isBurgerMenu && (
                 <button className="header__menu-btn" onClick={onEditMenu}/>

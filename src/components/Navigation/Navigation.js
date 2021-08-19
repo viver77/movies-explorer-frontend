@@ -3,7 +3,7 @@ import './Navigation.css';
 import {Link} from 'react-router-dom';
 import account from '../../images/account.svg';
 
-function Navigation({ links, classes,  loggedIn, onClose }) {
+function Navigation({ links, classes,  isLoggedIn, onClose }) {
 
     return (
         <>
@@ -16,7 +16,7 @@ function Navigation({ links, classes,  loggedIn, onClose }) {
                     </li>
                 )}
             </ul>
-            {loggedIn && (
+            {isLoggedIn && (
                 <Link className={`${classes.classNameLinkProfile} link`} to='/profile' onClick={onClose}>
                     Аккаунт
                     <img className="header__icon-account" alt="логотип" src={account}/>

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import * as authFormFields from '../../constants/authFormFields';
+import {CurrentUserContext} from '../../contexts/CurrentUserContext';
+import {useFormWithValidation} from '../../utils/formValidation'
 
-function Profile() {
+function Profile({ signOut }) {
+
+    const currentUser = useContext(CurrentUserContext);
 
     const settingsProfile = {
-        title: 'Привет Аккаунт',
+        title: `Привет, ${currentUser.name} !`,
         labelClassName: 'auth__form-label auth__form-label_style_profile',
         inputClassName: 'auth__form-input auth__form-input_style_profile',
         buttonText: 'Редактировать',
@@ -14,12 +18,20 @@ function Profile() {
         link: '/signup',
         linkText: 'Выйти из аккаунта',
         titleClassName:'auth__title auth__title_style_profile',
-        disabled: true,
+        signOut: signOut,
         fields: [
-            authFormFields.NAME,
-            authFormFields.EMAIL,
+            {...authFormFields.NAME, value: currentUser.name},
+            {...authFormFields.EMAIL, value: currentUser.email},
         ]
     }
+
+    const {
+        values,
+        errors,
+        isValid,
+        handleChange,
+        resetForm
+    } = useFormWithValidation({});
 
     return (
         <main
@@ -27,6 +39,11 @@ function Profile() {
         >
             <AuthForm
                settings={settingsProfile}
+               onSubmit={signOut}
+               onChange={handleChange}
+               errors={errors}
+               formIsValid={isValid}
+               values={values}
             />
         </main>
     )

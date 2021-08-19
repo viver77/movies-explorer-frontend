@@ -1,8 +1,9 @@
 import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import * as authFormFields from '../../constants/authFormFields';
+import {useFormWithValidation} from '../../utils/formValidation';
 
-function Register() {
+function Register({ onSignup }) {
 
     const settingsRegister = {
         title: 'Добро пожаловать!',
@@ -22,12 +23,30 @@ function Register() {
         ]
     }
 
+    const {
+        values,
+        errors,
+        isValid,
+        handleChange,
+        resetForm
+    } = useFormWithValidation({});
+
+
+    const handleSubmit = () => {
+        onSignup(values);
+    };
+
+
     return (
         <main
             className='register'
         >
             <AuthForm
                 settings={settingsRegister}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                errors={errors}
+                formIsValid={isValid}
             />
         </main>
     )

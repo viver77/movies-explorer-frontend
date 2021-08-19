@@ -1,8 +1,9 @@
 import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import * as authFormFields from '../../constants/authFormFields';
+import {useFormWithValidation} from '../../utils/formValidation'
 
-function Login() {
+function Login({ onSignin }) {
 
     const settingsLogin= {
         title: 'Рады видеть!',
@@ -16,10 +17,23 @@ function Login() {
         linkText: 'Регистрация',
         logotype:true,
         fields: [
-            authFormFields.NAME,
             authFormFields.EMAIL,
+            authFormFields.PASSWORD
         ]
     }
+
+    const {
+        values,
+        errors,
+        isValid,
+        handleChange,
+        resetForm
+    } = useFormWithValidation({});
+
+
+    const handleSubmit = () => {
+        onSignin(values);
+    };
 
     return (
         <main
@@ -27,6 +41,10 @@ function Login() {
         >
             <AuthForm
                 settings={settingsLogin}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                errors={errors}
+                formIsValid={isValid}
             />
         </main>
     )

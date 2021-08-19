@@ -1,27 +1,46 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './MoviesCard.css';
-import poster from '../../../images/movie.svg';
 import CardButton from '../CardButton/CardButton';
+import {CurrentUserContext} from '../../../contexts/CurrentUserContext';
 
-function MoviesCard ({ card, locationPath }) {
+function MoviesCard ({ card, locationPath, onCardLike, owner, savedCards, onRemoveCardLike }) {
 
-    const [isLiked, setIsLiked] = useState();
+    const [isLiked, setIsLiked] = useState( !(locationPath === '/saved-movies')
+        && !(savedCards.find(movie => movie.movieId === card.id) === undefined));
 
     function handleLikeClick() {
-        setIsLiked(!isLiked)
+
+        if (isLiked) {
+            handleRemoveCard(savedCards.find(movie => movie.movieId === card.id)._id);
+            setIsLiked(false)
+            return
+        }
+
+        const movieId = card.id;
+        const trailerLink = card.trailerLink;
+
+        onCardLike({
+            ...card,
+            movieId: movieId,
+            trailer: trailerLink,
+            image: 'https://api.nomoreparties.co' + card.image.url,
+            thumbnail: 'https://api.nomoreparties.co' + card.image.url,
+        })
+        setIsLiked(true)
     }
 
-    function handleDeleteCard() {
-
+    function handleRemoveCard(id) {
+        onRemoveCardLike(typeof id === 'string' ? id : card._id )
     }
 
-    const handleClick = locationPath === '/movies' ? handleLikeClick: handleDeleteCard;
+    const handleClick = locationPath === '/movies' ? handleLikeClick : handleRemoveCard;
+    const imageUrl = locationPath === '/movies' ? 'https://api.nomoreparties.co' + card.image.url : card.image;
 
     return (
         <li className="elements__item card">
             <div className="card__header">
                 <div className="card__wrapper">
-                    <h2 className="card__title">{card.title}</h2>
+                    <h2 className="card__title">{card.nameRU}</h2>
                     <p className="card__duration">{card.duration}</p>
                 </div>
                 <CardButton
@@ -30,7 +49,13 @@ function MoviesCard ({ card, locationPath }) {
                     isLiked={isLiked}
                 />
             </div>
-            <img className="card__image" src={poster} alt={card.name} />
+            <a href={card.trailerLink} target={'_blank'}>
+                <img
+                    className="card__image"
+                    src={imageUrl}
+                    alt={card.nameRU}
+                />
+            </a>
         </li>
     )
 }
