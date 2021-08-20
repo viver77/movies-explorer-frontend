@@ -4,7 +4,7 @@ import * as authFormFields from '../../constants/authFormFields';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import {useFormWithValidation} from '../../utils/formValidation'
 
-function Profile({ signOut, onUpdateProfileInfo, updateProfileResult }) {
+function Profile({ signOut, onUpdateProfileInfo }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -45,7 +45,6 @@ function Profile({ signOut, onUpdateProfileInfo, updateProfileResult }) {
                formIsValid={isValid}
                values={values}
                onUpdateProfileInfo={onUpdateProfileInfo}
-               updateProfileResult={updateProfileResult}
             />
         </main>
     )

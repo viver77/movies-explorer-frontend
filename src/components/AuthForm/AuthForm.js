@@ -1,15 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Logotype from '../logotype/logotype';
 import './AuthForm.css';
 import FormButtons from '../FormButtons/FormButtons';
 import Input from '../Input/Input';
 import Note from '../Note/Note';
-import mainApi from '../../utils/MainApi';
-import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
-function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values, onUpdateProfileInfo, updateProfileResult }) {
-
-    const currentUser = useContext(CurrentUserContext);
+function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values, onUpdateProfileInfo }) {
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
@@ -23,7 +19,7 @@ function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values, o
             email = settings.fields.find(item => item.name==='email').value} = values
 
         onUpdateProfileInfo(name, email)
-        setTextNote(updateProfileResult)
+
     }
 
     const markupAuthForm = (field) => {
