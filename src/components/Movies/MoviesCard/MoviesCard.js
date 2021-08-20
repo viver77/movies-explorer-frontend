@@ -8,6 +8,12 @@ function MoviesCard ({ card, locationPath, onCardLike, owner, savedCards, onRemo
     const [isLiked, setIsLiked] = useState( !(locationPath === '/saved-movies')
         && !(savedCards.find(movie => movie.movieId === card.id) === undefined));
 
+    function getTimeFromMins(mins) {
+        let hours = Math.trunc(mins/60);
+        let minutes = mins % 60;
+        return `${hours}ч ${minutes}м`;
+    };
+
     function handleLikeClick() {
 
         if (isLiked) {
@@ -41,7 +47,7 @@ function MoviesCard ({ card, locationPath, onCardLike, owner, savedCards, onRemo
             <div className="card__header">
                 <div className="card__wrapper">
                     <h2 className="card__title">{card.nameRU}</h2>
-                    <p className="card__duration">{card.duration}</p>
+                    <p className="card__duration">{getTimeFromMins(card.duration)}</p>
                 </div>
                 <CardButton
                     onClick={handleClick}

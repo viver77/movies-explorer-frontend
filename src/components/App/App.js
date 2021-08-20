@@ -14,6 +14,7 @@ import MenuPopup from '../MenuPopup/MenuPopup';
 import * as userAuth from "../../utils/userAuth";
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import mainApi from '../../utils/MainApi'
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
             id: '',
         }
     )
+
+    const [updateProfileResult, setUpdateProfileResult] = useState('');
 
     const [isMenuPopupOpen, setIsMenuPopupOpen] = useState(false);
 
@@ -85,6 +88,19 @@ function App() {
         }
     }
 
+    const onUpdateProfileInfo = (name, email) => {
+        mainApi.updateProfileInfo(name, email)
+            .then(res => {
+                setCurrentUser({ name, email })
+                setUpdateProfileResult('Данные аккаунта обновлены')
+            })
+            .catch((err) => {
+                setUpdateProfileResult('Во время запроса произошла ошибка. ' +
+                    'Возможно, проблема с соединением или сервер недоступен. ' +
+                    'Подождите немного и попробуйте ещё раз')
+            })
+    }
+
     useEffect(()=>{
         checkToken();
     },[])
@@ -135,6 +151,8 @@ function App() {
                                 isLoggedIn={isLoggedIn}
                                 signOut={signOut}
                                 component={Profile}
+                                onUpdateProfileInfo={onUpdateProfileInfo}
+                                updateProfileResult={updateProfileResult}
                             />
                             <Route path="*">
                                 <NotFound/>

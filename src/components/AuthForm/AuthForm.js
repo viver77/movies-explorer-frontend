@@ -7,7 +7,7 @@ import Note from '../Note/Note';
 import mainApi from '../../utils/MainApi';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
-function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values }) {
+function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values, onUpdateProfileInfo, updateProfileResult }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -22,16 +22,8 @@ function AuthForm({ settings, onChange, onSubmit, errors, formIsValid, values })
         const {name = settings.fields.find(item => item.name==='name').value,
             email = settings.fields.find(item => item.name==='email').value} = values
 
-        mainApi.updateProfileInfo(name, email)
-            .then(res => {
-                alert('Данные аккаунта обновлены. Авторизуйтесь снова');
-                settings.signOut();
-            })
-            .catch((err) => {
-                setTextNote('Во время запроса произошла ошибка. ' +
-                    'Возможно, проблема с соединением или сервер недоступен. ' +
-                    'Подождите немного и попробуйте ещё раз')
-            })
+        onUpdateProfileInfo(name, email)
+        setTextNote(updateProfileResult)
     }
 
     const markupAuthForm = (field) => {
