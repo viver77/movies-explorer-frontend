@@ -1,0 +1,137 @@
+.auth {
+    max-width: 396px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 70px;
+}
+
+.auth__title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.21;
+    margin: 40px auto;
+}
+
+.auth__title_style_profile {
+    text-align: center;
+    margin-bottom: 123px;
+}
+
+.auth__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth__fields-wrapper {
+    margin-bottom: 220px;
+}
+
+.auth__form-fieldset {
+    padding: 0;
+    border: none;
+    position: relative;
+    margin-top: 10px;
+}
+
+.auth__form-input {
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: #F9F9F9;
+    border-radius: 8px;
+    padding: 15px 0 15px 15px;
+    margin-top: 10px;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.23;
+    width: 100%;
+}
+
+.auth__form-input_style_profile {
+    background: none;
+    padding-left: 40px;
+    padding-bottom: 16px;
+    margin-top: 0;
+    text-align: right;
+    border-radius: 0;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.auth__form-label {
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #A0A0A0;
+}
+
+.auth__form-label:last-child {
+    margin-bottom: 0;
+}
+
+.auth__form-label_style_profile {
+    position: absolute;
+    bottom: 0;
+    top: 19px;
+    left: 0;
+}
+
+.auth__info {
+    margin: 0 auto;
+
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #A0A0A0;
+}
+
+.auth__info-link {
+    padding-left: 6px;
+    color: #FF6838;
+
+    transition: opacity 200ms;
+}
+
+.auth__info-link:hover {
+    opacity: 0.5;
+}
+
+.auth-form__input-error {
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+
+    color: #EE3465;
+}
+
+@media screen and (max-width: 768px) {
+    .auth {
+       padding-bottom: 232px;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+
+    .auth {
+        padding: 56px 30px 30px;
+    }
+
+    .auth__top {
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+    }
+
+    .auth__title {
+        margin-top: 0;
+    }
+
+    .auth__info {
+        font-size: 12px;
+    }
+
+}

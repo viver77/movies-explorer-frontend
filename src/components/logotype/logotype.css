@@ -1,0 +1,19 @@
+.logo {
+    transition: opacity 200ms;
+}
+
+.logo:hover {
+    opacity: 0.6;
+}
+
+.logotype__wrapper {
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 375px) {
+    .logotype__wrapper {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+}
